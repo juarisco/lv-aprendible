@@ -11,22 +11,13 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::view('/', 'home', ['nombre' => 'Josef']);
+Route::view('/', 'home')->name('home');
+Route::view('/about', 'about')->name('about');
+Route::view('/portafolio', 'portafolio')->name('portafolio');
+Route::view('/contact', 'contact')->name('contact');
 
-Route::get('saludo/{nombre?}', function ($nombre = 'Invitado') {
-    return 'Saludos ' . $nombre;
-});
-
-Route::get('contactame', function () {
-    return 'Sección de contactos';
-})->name('contactos');
-
-Route::get('/', function () {
-    echo "<a href='" . route('contactos') . "'>Contactos 1</a><br>";
-    echo "<a href='" . route('contactos') . "'>Contactos 2</a><br>";
-    echo "<a href='" . route('contactos') . "'>Contactos 3</a><br>";
-    echo "<a href='" . route('contactos') . "'>Contactos 4</a><br>";
-    echo "<a href='" . route('contactos') . "'>Contactos 5</a><br>";
-});
+// Route::get('/', function () {
+//     $nombre = 'Josef';
+//     return view('home')->with('nombre', $nombre);
+// })->name('home');
