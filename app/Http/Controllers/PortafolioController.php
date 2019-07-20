@@ -7,12 +7,11 @@ use Illuminate\Http\Request;
 class PortafolioController extends Controller
 {
     /**
-     * Handle the incoming request.
+     * Display a listing of the proyectos.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function __invoke(Request $request)
+    public function index()
     {
         $portafolio = [
             ['title' => 'Proyecto #1'],
