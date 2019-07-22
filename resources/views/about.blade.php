@@ -4,6 +4,6 @@
 
 @section('content')
     
-    <h1>Este es el About</h1>
+    <h1>@lang('About')</h1>
     
 @endsection

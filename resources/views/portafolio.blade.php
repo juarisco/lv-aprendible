@@ -4,14 +4,15 @@
 
 @section('content')
     
-    <h1>Este es el Portafolio</h1>
+    <h1>@lang('Portafolio')</h1>
 
     <ul>
-        @forelse ($portafolio as $item)
-            <li>{{ $item['title'] }} <small>{{ $loop->first ? 'Es el primero' : '' }}</small></li>
+        @forelse ($projects as $project)
+            <li>{{ $project->title }}</li>
         @empty
-            <li>No hay proyectos para mostrar</li>
+            <li>@lang('There\'s not projects to show')</li>
         @endforelse 
     </ul>
+    {{ $projects->links() }}
     
 @endsection

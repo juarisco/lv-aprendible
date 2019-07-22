@@ -4,7 +4,7 @@
 
 @section('content')
     
-    <h1>Este es el home</h1>
+    <h1>@lang('Home')</h1>
     Bienvenid@ {{ $nombre ?? "Invitado" }} 
 
 @endsection
