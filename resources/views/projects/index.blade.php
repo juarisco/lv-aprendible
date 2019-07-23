@@ -4,7 +4,8 @@
 
 @section('content')
     
-    <h1>@lang('Portafolio')</h1>
+    <h1>@lang('Projects')</h1>
+    <a href="{{ route('projects.create') }}">Crear un proyecto</a>
 
     <ul>
         @forelse ($projects as $project)
