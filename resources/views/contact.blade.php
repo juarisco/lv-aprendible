@@ -6,7 +6,7 @@
     
     <h1>{{ __('Contact') }}</h1>
 
-    <form action="{{ route('contact') }}" method="POST">
+    <form action="{{ route('messages.store') }}" method="POST">
         @csrf
         <input type="text" name="name" placeholder="Nombre..." value="{{ old('name') }}"><br>
         {!! $errors->first('name','<small>:message</small><br>') !!}

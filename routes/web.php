@@ -12,10 +12,13 @@
 */
 
 Route::view('/', 'home')->name('home');
-Route::view('/about', 'about')->name('about');
-Route::get('/portafolio', 'PortafolioController@index')->name('portafolio');
-Route::view('/contact', 'contact')->name('contact');
+Route::view('/quienes-somos', 'about')->name('about');
 
-Route::post('contact','MessagesController@store');
+Route::get('/portafolio', 'ProjectController@index')->name('projects.index');
+Route::get('/portafolio/{id}', 'ProjectController@show')->name('projects.show');
+
+Route::view('/contacto', 'contact')->name('contact');
+
+Route::post('contact', 'MessageController@store')->name('messages.store');
 
 // Route::resource('projects', 'PortafolioController');

@@ -8,9 +8,9 @@
 
     <ul>
         @forelse ($projects as $project)
-            <li>{{ $project->title }}</li>
+            <li><a href="{{ route('projects.show', $project) }}">{{ $project->title }}</a></li>
         @empty
-            <li>@lang('There\'s not projects to show')</li>
+            <li>@lang('There\'re not projects to show')</li>
         @endforelse 
     </ul>
     {{ $projects->links() }}
