@@ -38,7 +38,7 @@ class ProjectController extends Controller
     {
         Project::create($request->validated());
 
-        return redirect()->route('projects.index');
+        return redirect()->route('projects.index')->with('status', __('The project was created successfully.'));
     }
 
     public function edit(Project $project)
@@ -52,13 +52,13 @@ class ProjectController extends Controller
     {
         $project->update($request->validated());
 
-        return redirect()->route('projects.show', $project);
+        return redirect()->route('projects.show', $project)->with('status', __('The project was updated successfully.'));
     }
 
     public function destroy(Project $project)
     {
         $project->delete();
 
-        return redirect()->route('projects.index');
+        return redirect()->route('projects.index')->with('status', __('The project was deleted successfully.'));
     }
 }
