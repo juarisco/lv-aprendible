@@ -6,35 +6,12 @@
     
     <h1>@lang('Edit Project')</h1>
 
-    @if ($errors->any())
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    @endif
+    @include('partials.validation-errors')
 
     <form action="{{ route('projects.update', $project) }}" method="post">
-        @csrf @method('PATCH')
+        @method('PATCH')
         
-        <label for="">
-            Título del proyecto <br>
-            <input type="text" name="title" value="{{ old('title', $project->title) }}">
-        </label>
-        <br>
+        @include('projects._form', ['btnText' => __('Update')])
 
-        <label for="">
-            URL del proyecto <br>
-            <input type="text" name="url" value="{{ old('url', $project->url) }}">
-        </label>
-        <br>
-
-        <label for="">
-            Descripción del proyecto <br>
-            <textarea name="description">{{ old('description', $project->description) }}</textarea>
-        </label>
-        <br>
-
-        <button type="submit">@lang('Update')</button>
     </form>   
 @endsection
