@@ -14,7 +14,7 @@ const mix = require('laravel-mix');
 mix.js('resources/js/app.js', 'public/js')
     .sass('resources/sass/app.scss', 'public/css');
 
-mix.browserSync('http://lv-aprendible.test');
+mix.browserSync('http://aprendible.test');
 
 if (mix.inProduction()) {
     mix.version();
