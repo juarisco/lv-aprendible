@@ -25,7 +25,7 @@ class SaveProjectRequest extends FormRequest
     {
         return [
             'title' => 'required',
-            'url' => 'required',
+            'url' => 'required|unique:projects,url,' . $this->project->id,
             'description' => 'required',
         ];
     }
