@@ -11,7 +11,9 @@
             @include('partials.validation-errors')
             
             <form class="bg-white py-3 px-4 shadow rounded" 
-            action="{{ route('projects.update', $project) }}" method="post">
+                action="{{ route('projects.update', $project) }}" 
+                enctype="multipart/form-data"
+                method="post">
                 @method('PATCH')
                 <h1 class="display-4">@lang('Edit Project')</h1>
                 <hr>
