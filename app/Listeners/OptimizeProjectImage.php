@@ -28,6 +28,8 @@ class OptimizeProjectImage implements ShouldQueue
      */
     public function handle(ProjectSaved $event)
     {
+        // throw new \Exception("Error optimizing the image", 1);
+
         // resize image to new width
         $image = Image::make(Storage::get($event->project->image))
             ->widen(600)
