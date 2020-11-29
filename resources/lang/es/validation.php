@@ -115,6 +115,7 @@ return [
     'url'                  => 'El formato :attribute es inválido.',
     'uuid'                 => 'El campo :attribute debe ser un UUID válido.',
 
+
     /*
     |--------------------------------------------------------------------------
     | Custom Validation Language Lines
@@ -177,6 +178,7 @@ return [
         'time'                  => 'hora',
         'subject'               => 'asunto',
         'message'               => 'mensaje',
-        'image'                 =>  'imágen'
+        'image'                 =>  'imágen',
+        'category_id' => 'categoría',
     ],
 ];
