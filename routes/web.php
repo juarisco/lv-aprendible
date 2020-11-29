@@ -11,6 +11,12 @@
 |
 */
 
+use Illuminate\Support\Facades\DB;
+
+// DB::listen(function ($query) {
+//     var_dump($query->sql);
+// });
+
 Route::view('/', 'home')->name('home');
 Route::view('/quienes-somos', 'about')->name('about');
 
