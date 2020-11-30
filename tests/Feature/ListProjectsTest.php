@@ -11,26 +11,14 @@ class ListProjectsTest extends TestCase
 {
     use RefreshDatabase;
 
-    /**
-     * A basic feature test example.
-     *
-     * @return void
-     */
-    public function test_can_see_all_projects()
+    /** @test */
+    public function it_can_see_all_projects()
     {
-        $this->withoutExceptionHandling();
-
-        $project = Project::create([
-            'title' => 'Mi nuevo proyecto',
-            'url' => 'mi-nuevo-proyecto',
-            'description' => 'Descripción de mi nuevo proyecto',
-        ]);
-
-        $project2 = Project::create([
-            'title' => 'Mi segundo proyecto',
-            'url' => 'mi-segundo-proyecto',
-            'description' => 'Descripción de mi segundo proyecto',
-        ]);
+        // $user = factory('App\User')->create();
+        // dd($user->toArray());
+        $project = factory(Project::class)->create();
+        // dd($project->toArray());
+        $project2 = factory(Project::class)->create();
 
         $response = $this->get(route('projects.index'));
 
@@ -47,17 +35,8 @@ class ListProjectsTest extends TestCase
     /** @test */
     function it_can_see_individual_projects()
     {
-        $project = Project::create([
-            'title' => 'Mi nuevo proyecto',
-            'url' => 'mi-nuevo-proyecto',
-            'description' => 'Descripción de mi nuevo proyecto',
-        ]);
-
-        $project2 = Project::create([
-            'title' => 'Mi segundo proyecto',
-            'url' => 'mi-segundo-proyecto',
-            'description' => 'Descripción de mi segundo proyecto',
-        ]);
+        $project = factory(Project::class)->create();
+        $project2 = factory(Project::class)->create();
 
         $response = $this->get(route('projects.show', $project));
 
