@@ -8,11 +8,18 @@
         <div class="col-12 col-sm-10 col-lg-8 mx-auto">
             @if ($project->image)
                 <img class="card-img-top"
-                    src="/storage/{{ $project->image }}" 
+                    src="/storage/{{ $project->image }}"
                     alt="{{ $project->title }}">
             @endif
             <div class="bg-white p-5 shadow rounded">
-                <h1>{{ $project->title }}</h1>
+                <h1 class="mb-0">{{ $project->title }}</h1>
+
+                @if ($project->category_id)
+                <a href="{{ route('categories.show', $project->category) }}"
+                class="badge badge-secondary mb-1"
+                >{{ $project->category->name }}</a>
+                @endif
+
                 <p class="text-secondary">{{ $project->description }}</p>
                 <p class="text-black-50">{{ $project->created_at->diffForHumans() }}</p>
                 <div class="d-flex justify-content-between align-items-center">
@@ -22,7 +29,7 @@
 
                             <a class="btn btn-primary" href="{{ route('projects.edit',$project) }}">@lang('Edit')</a>
                             <a class="btn btn-danger" href="#" onclick="document.getElementById('delete-project').submit()">@lang('Delete')</a>
-                            
+
                             <form id="delete-project"
                                 class="d-none"
                                 action="{{ route('projects.destroy', $project) }}" method="post">
@@ -31,7 +38,7 @@
                         </div>
                     @endauth
                 </div>
-                    
+
             </div>
         </div>
     </div>
