@@ -27,7 +27,11 @@
                     @auth
                         <div class="btn-group btn-group-sm">
 
+                            @can('update', $project)
                             <a class="btn btn-primary" href="{{ route('projects.edit',$project) }}">@lang('Edit')</a>
+                            @endcan
+
+                            @can('delete', $project)
                             <a class="btn btn-danger" href="#" onclick="document.getElementById('delete-project').submit()">@lang('Delete')</a>
 
                             <form id="delete-project"
@@ -35,6 +39,7 @@
                                 action="{{ route('projects.destroy', $project) }}" method="post">
                                 @csrf @method('DELETE')
                             </form>
+                            @endcan
                         </div>
                     @endauth
                 </div>

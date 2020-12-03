@@ -24,6 +24,7 @@ class ProjectController extends Controller
     public function index()
     {
         return view('projects.index', [
+            'newProject' => new Project,
             'projects' => Project::with('category')->latest()->paginate(2)
         ]);
     }
@@ -38,10 +39,10 @@ class ProjectController extends Controller
     public function create()
     {
         // abort_unless(Gate::allows('create-projects'), 403);
-        $this->authorize('create-projects');
+        $this->authorize('create', $project = new Project);
 
         return view('projects.create', [
-            'project' => new Project,
+            'project' => $project,
             'categories' => Category::pluck('name', 'id')
         ]);
     }
@@ -49,6 +50,9 @@ class ProjectController extends Controller
     public function store(SaveProjectRequest $request)
     {
         $project = new Project($request->validated());
+
+        $this->authorize('create', $project);
+
         $project->image = $request->file('image')->store('images');
         $project->save();
 
@@ -59,6 +63,8 @@ class ProjectController extends Controller
 
     public function edit(Project $project)
     {
+        $this->authorize('update', $project);
+
         return view('projects.edit', [
             'project' => $project,
             'categories' => Category::pluck('name', 'id')
@@ -67,6 +73,8 @@ class ProjectController extends Controller
 
     public function update(Project $project, SaveProjectRequest $request)
     {
+        $this->authorize('update', $project);
+
         if ($request->hasFile('image')) {
             Storage::delete($project->image);
             $project->fill($request->validated());
@@ -83,6 +91,8 @@ class ProjectController extends Controller
 
     public function destroy(Project $project)
     {
+        $this->authorize('delete', $project);
+
         Storage::delete($project->image);
 
         $project->delete();
